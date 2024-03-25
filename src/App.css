@@ -1,0 +1,19 @@
+.custom-border{
+    border: 1px solid gray !important;
+}
+
+.custom-login-border{
+    border : 2px solid gray !important;
+    border-top: none !important;
+}
+
+.custom-nav-button{
+    border: 1px solid black !important;
+}
+
+h1{
+    color: #2e2e2e;
+}
+h2{
+    color: #2e2e2e;
+}
