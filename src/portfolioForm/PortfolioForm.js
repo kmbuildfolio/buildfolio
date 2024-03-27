@@ -155,7 +155,7 @@ const PortfolioForm = () => {
   return (
     <>
       <div style={{ backgroundImage: `url(${img})`, backgroundSize: "cover" }}>
-        <ToastContainer position="top-center" containerId={"1"}/>
+        <ToastContainer position="top-center"/>
         <NavBar />
         <div className="relative">
           {loading && <Loading content={loading}/>}

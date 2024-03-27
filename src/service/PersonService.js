@@ -51,3 +51,13 @@ export const changePassword = async (resetPassword) =>{
         throw err;
     }
 }
+
+export const sendMessage = async (userContact, username) =>{
+    try{
+        const res = await myAxios.post(`/api/public/contact/send-msg?username=${username}`,userContact);
+        return res.data;
+    }
+    catch(err){
+        throw err;
+    }
+}

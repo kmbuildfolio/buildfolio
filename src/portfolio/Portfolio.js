@@ -11,15 +11,36 @@ import { Grow } from "@mui/material";
 import { useInView } from "react-intersection-observer";
 import { getPortfolioByUsername } from "../service/FormService";
 import { useLocation } from "react-router-dom";
-import "react-toastify/dist/ReactToastify.css";
 import LoadingBar from "react-top-loading-bar";
 import NotFound from "../components/NotFound";
+import { sendMessage } from "../service/PersonService";
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer, toast } from "react-toastify";
 
 const Portfolio = () => {
   const [portfolio, setPortfolio] = useState(null);
   const [userExist, setUserExist] = useState(true);
   const [progress, setProgress] = useState(0);
   const location = useLocation();
+  const userName = location.pathname.split("/").pop();
+
+  const sendUserMessage = (userContact) =>{
+    try{
+      sendMessage(userContact,userName)
+      .then(data =>{
+        if(!data.success){
+          toast.dismiss(data.message);
+        }
+      })
+      .catch(err=>{
+        toast.error("Something Went Wrong");
+      })
+    }
+    catch(err){
+      console.error(err);
+    }
+  }
+
   const ScrollGrowItem = ({ children }) => {
     const { ref, inView } = useInView({
       triggerOnce: true,
@@ -36,7 +57,6 @@ const Portfolio = () => {
   };
 
   useEffect(() => {
-    const userName = location.pathname.split("/").pop();
     try {
       setProgress(progress + 50);
       getPortfolioByUsername(userName)
@@ -68,6 +88,7 @@ const Portfolio = () => {
       />
       {portfolio ? (
         <main className="text-gray-400 bg-gray-900 body-font">
+          <ToastContainer position="top-center"/>
           <div>
             <Navbar portfolio={portfolio} />
             <ScrollGrowItem>
@@ -95,7 +116,7 @@ const Portfolio = () => {
               )}
             </ScrollGrowItem>
             <ScrollGrowItem>
-              <Contacts contact={portfolio.biodata} />
+              <Contacts contact={portfolio.biodata} onSendMessage={sendUserMessage}/>
             </ScrollGrowItem>
           </div>
         </main>
