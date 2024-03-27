@@ -26,10 +26,10 @@ const Authentication = () => {
               setVerificationPage(false);
               setLoginForm(true);
               toast.success("SignUp Successfully");
-              setLoading(null);
             } else {
-              toast.error(res.message);
+              alert("Wrong OTP");
             }
+            setLoading(null);
           })
           .catch((err) => {
             toast.error("Something Went Wrong");
@@ -44,7 +44,7 @@ const Authentication = () => {
 
   return (
     <div style={{ backgroundImage: `url(${img})`, backgroundSize: "cover" }}>
-      <ToastContainer position="top-center" />
+      <ToastContainer position="top-center"/>
       <NavBar />
       <div className="relative">
         {loading && <Loading content={loading} />}

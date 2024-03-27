@@ -32,12 +32,10 @@ const LoginSignUp = ({ setLoginForm, setVerificationPage, setPerson }) => {
           (data) => {
             if (data.success) {
               alert("OTP sent from "+AUTH_MAIL);
+              setVerificationPage(true);
               getOTP(registerPerson.email)
                 .then((res) => {
-                  if (res.success) {
-                    setVerificationPage(true);
-                    return;
-                  } else {
+                  if (!res.success) {
                     setRegisterErrorMsg(res.message);
                     return;
                   }
