@@ -60,6 +60,8 @@ const Authentication = () => {
                     setLoginForm={setLoginForm}
                     setVerificationPage={setVerificationPage}
                     setPerson={setPerson}
+                    loading={loading}
+                    setLoading={setLoading}
                   />
                 ) : (
                   <OTPForm handleVerify={handleSaveUser} />

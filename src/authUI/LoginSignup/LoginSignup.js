@@ -9,8 +9,9 @@ import { saveUser } from '../../authService/auth';
 import SignupPage from "./SignUp/SignupPage";
 import LoginPage from "./Login/LoginPage";
 import { AUTH_MAIL } from '../../service/helper';
+import Loading from '../../components/Loading';
 
-const LoginSignUp = ({ setLoginForm, setVerificationPage, setPerson }) => {
+const LoginSignUp = ({ setLoginForm, setVerificationPage, setPerson, loading, setLoading }) => {
     const [loginPage, setLoginPage] = useState(true);
     const [loginPerson, setLoginPerson] = useState({
       userNameOrEmail: "",
@@ -27,9 +28,11 @@ const LoginSignUp = ({ setLoginForm, setVerificationPage, setPerson }) => {
   
     const onSignUp = (person) => {
       setPerson(person);
+      setLoading("Sending OTP...");
       try {
         verifyUserStatus(registerPerson.email, registerPerson.userName).then(
           (data) => {
+            setLoading(null);   
             if (data.success) {
               alert("OTP sent from "+AUTH_MAIL);
               setVerificationPage(true);
@@ -47,8 +50,12 @@ const LoginSignUp = ({ setLoginForm, setVerificationPage, setPerson }) => {
               setRegisterErrorMsg(data.message);
               return;
             }
-          }
-        );
+          })
+          .catch(err =>{
+            setLoading(null);
+            toast.error("Something Went Wrong");
+            return;
+          })
       } catch (error) {
         console.error(error);
       }
@@ -128,7 +135,7 @@ const LoginSignUp = ({ setLoginForm, setVerificationPage, setPerson }) => {
     return (
       <div className='w-full'>
         <ToastContainer position='top-center'/>
-        <div >
+        <div>
           {loginPage ? (
             <LoginPage
               setLoginPage={setLoginPage}
