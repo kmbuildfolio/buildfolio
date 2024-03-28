@@ -142,7 +142,8 @@ const PersonalDetails = (props) => {
           </div>
           <AddRemoveButton
             changeContent={(flag) => updateBio(flag)}
-            removeAll={false}
+            min={1}
+            max={8}
             contentLength={biodata.socials.length}
           />
           <div className="flex flex-col gap-1">

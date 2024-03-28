@@ -27,7 +27,7 @@ const PortfolioForm = () => {
   const navigate = useNavigate();
   const [isPortfolio, setIsPortfolio] = useState(null);
   const [currFormNum, setCurrFormNum] = useState(1);
-  const [loading, setLoading] = useState("Loading...");
+  const [loading, setLoading] = useState(null);
   const [person, setPerson] = useState(null);
   const hostname = window.location.hostname;
   const [biodata, setBiodata] = useState({

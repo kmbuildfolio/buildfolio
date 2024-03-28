@@ -60,8 +60,9 @@ const Projects = (props) => {
         ))}
         <AddRemoveButton
           changeContent={(flag) => changeProjectInfo(flag)}
+          min={0}
+          max={5}
           contentLength={projectInfo.length}
-          removeAll={true}
         />
       </CardContent>
       <FormJumpButton

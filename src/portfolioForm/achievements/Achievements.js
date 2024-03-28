@@ -58,8 +58,9 @@ const Achievements = (props) => {
         ))}
         <AddRemoveButton
           changeContent={(flag) => changeAchievementsInfo(flag)}
+          min={0}
+          max={4}
           contentLength={achievementsInfo.length}
-          removeAll={true}
         />
       </CardContent>
       <FormJumpButton

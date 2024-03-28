@@ -56,8 +56,9 @@ const Skills = (props) => {
         </div>
         <AddRemoveButton
           changeContent={(flag) => changeSkillsInfo(flag)}
+          min={1}
+          max={15}
           contentLength={skillsInfo.length}
-          removeAll={false}
         />
       </CardContent>
       <FormJumpButton

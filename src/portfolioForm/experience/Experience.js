@@ -61,8 +61,9 @@ const Experience = (props) => {
           changeContent={(flag) => {
             changeExperienceInfo(flag);
           }}
+          min={0}
+          max={4}
           contentLength={experienceInfo.length}
-          removeAll={true}
         />
       </CardContent>
       <FormJumpButton setCurrFormNum={setCurrFormNum} confirmData={setConfirmData} />

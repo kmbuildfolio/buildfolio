@@ -59,8 +59,9 @@ const Education = (props) => {
         ))}
         <AddRemoveButton
           changeContent={(flag) => changeEducationInfo(flag)}
+          min={1}
+          max={4}
           contentLength={educationInfo.length}
-          removeAll={false}
         />
       </CardContent>
       <FormJumpButton
