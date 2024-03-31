@@ -46,10 +46,7 @@ const ProjectInfo = ({ data, updateProjects }) => {
           />
         </div>
         <div className="flex flex-col gap-1 justify-between w-full">
-          <div>
             <FormLabel>Project Image :</FormLabel>
-            <span className="text-red-900 text-[18px]"> *</span>
-          </div>
           <div>
             {!data.image ? (
               <Input
