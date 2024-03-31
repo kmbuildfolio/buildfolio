@@ -44,8 +44,7 @@ const Home = () => {
         buttonStyle={{ backgroundColor:'#0c3059',color: "white", fontSize: "13px" }}
         buttonText="OKAY!"
       >
-        We use cookies to ensure you have the best browsing experience on our
-        website.
+        Enable Third Party Cookies to Authenticate
       </CookieConsent>}
         <Header handleFormPage={handleFormPage}/>
     </div>
