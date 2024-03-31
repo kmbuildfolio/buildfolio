@@ -9,7 +9,7 @@ const Header = ({handleFormPage}) => {
                     </h1>
                     <h1 className='font-sans font-bold text-5xl py-2'>Portfolio</h1>
                     <p className="my-4">At BuildFolio, we believe in the power of simplicity. Our intuitive interface empowers users of all skill levels to create personalized portfolios that reflect their unique talents and accomplishments.</p>
-                    <button className="px-4 py-2 bg-gray-300 rounded-md font-medium border border-gray-400" onClick={handleFormPage}>Let's Create</button>
+                    <button className="px-4 py-2 bg-gray-300 rounded-md font-medium border border-gray-400" onClick={handleFormPage}>Let's Create/Update</button>
                 </div>
         </header>
     )

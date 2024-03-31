@@ -44,7 +44,7 @@ const Achievements = (props) => {
   return (
     <div>
       <CardContent className="flex flex-col">
-      {errorMsg && <span className="text-[#ff3333]">{errorMsg}</span>}
+      {errorMsg && <span className="text-[#ff3333] text-sm self-center">{errorMsg}</span>}
         {achievementsInfo.map((data, key) => (
           <div key={key}>
             <AchievementsInfo

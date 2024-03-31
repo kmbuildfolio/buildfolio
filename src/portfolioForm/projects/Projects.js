@@ -46,7 +46,7 @@ const Projects = (props) => {
   return (
     <div>
       <CardContent className="flex flex-col">
-      {errorMsg && <span className="text-[#ff3333]">{errorMsg}</span>}
+      {errorMsg && <span className="text-[#ff3333] text-sm self-center">{errorMsg}</span>}
         {projectInfo.map((data, key) => (
           <div key={key}>
             <ProjectInfo

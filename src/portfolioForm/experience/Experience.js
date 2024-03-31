@@ -45,7 +45,7 @@ const Experience = (props) => {
   return (
     <div>
       <CardContent className="flex flex-col">
-      {errorMsg && <span className="text-[#ff3333]">{errorMsg}</span>}
+      {errorMsg && <span className="text-[#ff3333] text-sm self-center">{errorMsg}</span>}
         {experienceInfo.map((data, key) => (
           <div key={key}>
             <ExperienceInfo

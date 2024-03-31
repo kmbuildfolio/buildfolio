@@ -127,7 +127,7 @@ const ProjectInfo = ({ data, updateProjects }) => {
 
         <div className="flex flex-col gap-1">
           <div>
-            <FormLabel htmlFor="social">Description</FormLabel>
+            <FormLabel htmlFor="social">Description {"(Min 20 Letters)"}</FormLabel>
             <span className="text-red-900 text-[18px]"> *</span>
           </div>
           <TextField

@@ -61,7 +61,7 @@ const PersonalDetails = (props) => {
   return (
     <div>
       <CardContent className="flex flex-col">
-      {errorMsg && <span className="text-[#ff3333]">{errorMsg}</span>}
+      {errorMsg && <span className="text-[#ff3333] text-sm self-center">{errorMsg}</span>}
         <div className="grid grid-cols-1 gap-4 w-full">
           <div className="flex flex-col gap-1">
             <div>
@@ -148,7 +148,7 @@ const PersonalDetails = (props) => {
           />
           <div className="flex flex-col gap-1">
             <div>
-            <FormLabel htmlFor="social">Description</FormLabel>
+            <FormLabel htmlFor="social">Description {"(Min 20 Letters)"}</FormLabel>
             <span className="text-red-900 text-[18px]"> *</span>
             </div>
             <TextField

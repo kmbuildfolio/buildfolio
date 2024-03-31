@@ -93,7 +93,7 @@ const ExperienceInfo = ({ data, setExperienceInfo }) => {
         </div>
         <div className="flex flex-col gap-1">
           <div>
-            <FormLabel htmlFor="description">Description</FormLabel>
+            <FormLabel htmlFor="description">Description {"(Min 20 Letters)"}</FormLabel>
             <span className="text-red-900 text-[18px]"> *</span>
           </div>
           <TextField

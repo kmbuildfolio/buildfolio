@@ -43,7 +43,7 @@ const Skills = (props) => {
   return (
     <div>
       <CardContent className="flex flex-col">
-      {errorMsg && <span className="text-[#ff3333]">{errorMsg}</span>}
+      {errorMsg && <span className="text-[#ff3333] text-sm self-center">{errorMsg}</span>}
         <div className="grid grid-rows-1 gap-4 w-full">
           {skillsInfo.map((skill, key) => (
             <div key={key}>
