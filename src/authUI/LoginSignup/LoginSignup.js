@@ -9,9 +9,8 @@ import { saveUser } from '../../authService/auth';
 import SignupPage from "./SignUp/SignupPage";
 import LoginPage from "./Login/LoginPage";
 import { AUTH_MAIL } from '../../service/helper';
-import Loading from '../../components/Loading';
 
-const LoginSignUp = ({ setLoginForm, setVerificationPage, setPerson, loading, setLoading }) => {
+const LoginSignUp = ({ setLoginForm, setVerificationPage, setPerson, setLoading }) => {
     const [loginPage, setLoginPage] = useState(true);
     const [loginPerson, setLoginPerson] = useState({
       userNameOrEmail: "",
@@ -63,17 +62,18 @@ const LoginSignUp = ({ setLoginForm, setVerificationPage, setPerson, loading, se
   
     const onSignIn = (person) => {
       try {
+        setLoading(' ');
         userLogin(person)
           .then((data) => {
             if (data.success) {
               saveUser(data);
               toast.success("Login Succesfully !!");
               navigate("/");
-              return;
             } else {
               setLoginErrorMsg(data.message);
-              return;
             }
+            setLoading(null);
+            return;
           })
           .catch((err) => {
             if (err.response.data) {
@@ -81,6 +81,7 @@ const LoginSignUp = ({ setLoginForm, setVerificationPage, setPerson, loading, se
             } else {
               toast.error("Something Went Wrong");
             }
+            setLoading(null);
           });
       } catch (error) {
         console.error(error);

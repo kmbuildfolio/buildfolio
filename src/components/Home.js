@@ -4,8 +4,14 @@ import Header from './Header';
 import { useNavigate } from 'react-router-dom';
 import img from '../assets/intro-bg.jpg';
 import { isLogin } from '../authService/auth';
+import CookieConsent from 'react-cookie-consent';
+import { Cookies } from 'react-cookie-consent';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
 const Home = () => {
+  const hostname = window.location.hostname;
+  const [showCookieConsent,setShowCookieConsent] = useState(false);
     const navigate = useNavigate();
   // Define functions for handling authentication and form submission
   const handleLoginPage  = () => {
@@ -22,9 +28,25 @@ const Home = () => {
     }
   }
 
+  useEffect(()=>{
+    if(!Cookies.get('CookieConsent')){
+      setShowCookieConsent(true);
+    }
+  },[])
+
   return (
     <div style={{ backgroundImage: `url(${img})`, backgroundSize: 'cover' }}>
         <NavBar/>
+        {showCookieConsent && <CookieConsent
+        debug={true}
+        extraCookieOptions={{ domain: hostname }}
+        style={{ background: "#f1f2f1", color: "black" }}
+        buttonStyle={{ backgroundColor:'#0c3059',color: "white", fontSize: "13px" }}
+        buttonText="OKAY!"
+      >
+        We use cookies to ensure you have the best browsing experience on our
+        website.
+      </CookieConsent>}
         <Header handleFormPage={handleFormPage}/>
     </div>
   );

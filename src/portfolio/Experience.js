@@ -16,7 +16,7 @@ export default function Experience({experience}) {
                 <div className="flex">
                   <TerminalIcon className="block w-8 text-gray-500 mb-4" />
                   <div className="w-full">
-                    <div className="title-font font-medium text-white">
+                    <div className="title-font font-medium text-white mr-2">
                       {experience.role}
                     </div>
                   </div>
@@ -24,7 +24,7 @@ export default function Experience({experience}) {
 
                 <div className="inline-flex items-center">
                   <span className="flex-grow flex flex-col">
-                    <div className="flex self-center items-center w-2/5 justify-around pb-4">
+                    <div className="flex self-center items-center w-full justify-around pb-4">
                       <img
                         alt="logo"
                         src={experience.image ? experience.image : "./experience-default.png"}
@@ -33,7 +33,7 @@ export default function Experience({experience}) {
                       <div className="font-medium text-lg">{experience.company}</div>
                     </div>
 
-                    <span className="text-gray-500 text-sm uppercase">
+                    <span className="text-gray-300 text-xs uppercase">
                       {experience.description}
                     </span>
                   </span>

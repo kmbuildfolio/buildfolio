@@ -129,6 +129,7 @@ const PortfolioForm = () => {
   };
 
   useEffect(() => {
+    setPerson(getUser());
     try {
       getPortfolio()
         .then((data) => {
@@ -140,12 +141,11 @@ const PortfolioForm = () => {
             setProjects(data.projects);
             setAchievements(data.achievements);
             setIsPortfolio(true);
-            setPerson(getUser());
           }
           setLoading(null);
         })
         .catch((err) => {
-          toast.error("Something Went Wrong");
+          toast.error("Something Went Wrong, May you login again !!");
         });
     } catch (err) {
       console.error(err);
