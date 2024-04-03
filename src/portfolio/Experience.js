@@ -9,7 +9,7 @@ export default function Experience({experience}) {
         <h1 className="sm:text-4xl text-3xl font-medium title-font text-white mb-12">
           Professional Journey
         </h1>
-        <div className="flex flex-wrap m-4">
+        <div className="flex flex-wrap m-4 justify-center">
           {experience.map((experience,key) => (
             <div key={key} className="p-4 md:w-1/2 w-full">
               <div className="h-full bg-gray-800 bg-opacity-40 p-8 rounded">
