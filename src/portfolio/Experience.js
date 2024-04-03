@@ -12,7 +12,7 @@ export default function Experience({experience}) {
         <div className="flex flex-wrap m-4 justify-center">
           {experience.map((experience,key) => (
             <div key={key} className="p-4 md:w-1/2 w-full">
-              <div className="h-full bg-gray-800 bg-opacity-40 p-8 rounded">
+              <div className="h-full bg-gray-800 bg-opacity-40 p-8 rounded overflow-wrap-anywhere">
                 <div className="flex">
                   <TerminalIcon className="block w-8 text-gray-500 mb-4" />
                   <div className="w-full">
@@ -28,7 +28,7 @@ export default function Experience({experience}) {
                       <img
                         alt="logo"
                         src={experience.image ? experience.image : "./experience-default.png"}
-                        className="w-8 rounded-full flex-shrink-0 object-cover object-center"
+                        className="w-8 rounded-full flex-shrink-0 object-cover object-center mr-4"
                       />
                       <div className="font-medium text-lg">{experience.company}</div>
                     </div>

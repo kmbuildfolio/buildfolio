@@ -17,3 +17,7 @@ h1{
 h2{
     color: #2e2e2e;
 }
+
+.overflow-wrap-anywhere{
+    overflow-wrap: anywhere;
+}

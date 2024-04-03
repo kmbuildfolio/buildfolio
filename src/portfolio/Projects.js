@@ -24,7 +24,7 @@ export default function Projects({ projects }) {
             Let's transform ideas into impactful realities.
           </p>
         </div>
-        <div className="flex flex-wrap -m-4">
+        <div className="flex flex-wrap justify-center">
           {projectsDetails.map((project, key) => (
             <div
               key={key}
@@ -38,7 +38,7 @@ export default function Projects({ projects }) {
                 />
                 <div className="px-8 pt-10 pb-5 relative z-10 w-full border-4 border-gray-800
                  bg-gray-900 opacity-0 hover:opacity-100">
-                  <a href={project.url === "" ? null : project.url} target="_blank">
+                  <a href={project.url === "" ? null : project.url} target="_blank" className="overflow-wrap-anywhere">
                     <h2 className="tracking-widest text-sm title-font font-medium text-green-400 mb-1">
                       {project.tech}
                     </h2>
