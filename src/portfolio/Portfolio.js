@@ -14,8 +14,7 @@ import { useLocation } from "react-router-dom";
 import LoadingBar from "react-top-loading-bar";
 import NotFound from "../components/NotFound";
 import { sendMessage } from "../service/PersonService";
-import "react-toastify/dist/ReactToastify.css";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 
 const Portfolio = () => {
   const [portfolio, setPortfolio] = useState(null);
@@ -88,7 +87,6 @@ const Portfolio = () => {
       />
       {portfolio ? (
         <main className="text-gray-400 bg-gray-900 body-font">
-          <ToastContainer position="top-center"/>
           <div>
             <Navbar portfolio={portfolio} />
             <ScrollGrowItem>

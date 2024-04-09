@@ -18,8 +18,7 @@ import {
   savePortfolioForm,
   updatePortfolio,
 } from "../service/FormService";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import { getUser } from "../authService/auth";
 import Loading from "../components/Loading";
 
@@ -153,9 +152,7 @@ const PortfolioForm = () => {
   }, []);
 
   return (
-    <>
-      <div style={{ backgroundImage: `url(${img})`, backgroundSize: "cover" }}>
-        <ToastContainer position="top-center"/>
+      <div>
         <NavBar />
         <div className="relative">
           {loading && <Loading content={loading}/>}
@@ -264,7 +261,6 @@ const PortfolioForm = () => {
           </div>
         </div>
       </div>
-    </>
   );
 };
 

@@ -6,8 +6,7 @@ import { useState } from 'react'
 import { doLogout, isLogin } from '../authService/auth'
 import { useNavigate } from 'react-router-dom'
 import { logoutUser } from '../service/PersonService'
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 
 const NavBar = ({ props }) => {
   const [isNavLogin, setIsNavLogin] = useState(isLogin());
@@ -31,7 +30,6 @@ const NavBar = ({ props }) => {
   
   return (
     <div className="flex-initial w-full pt-1 border-t bg-transparent h-[50px]">
-      <ToastContainer position='top-center'/>
       <div className="container flex items-center justify-between px-4 md:px-7 lg:px-20">
         <a className="flex items-center space-x-2 cursor-pointer" href='/'>
           <img src={'./buildfolio-logo.png'} className="bg-transparent h-[40px] w-auto" />

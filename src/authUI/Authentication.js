@@ -6,8 +6,7 @@ import OTPForm from "./OTPForm";
 import ForgotPassword from "./ForgotPassword";
 import img from "../assets/intro-bg.jpg";
 import { savePerson } from "../service/FormService";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import Loading from "../components/Loading";
 
 const Authentication = () => {
@@ -43,8 +42,7 @@ const Authentication = () => {
   };
 
   return (
-    <div style={{ backgroundImage: `url(${img})`, backgroundSize: "cover" }}>
-      <ToastContainer position="top-center"/>
+    <div>
       <NavBar />
       <div className="relative">
         {loading && <Loading content={loading} />}

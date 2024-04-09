@@ -7,10 +7,13 @@ import Authentication from './authUI/Authentication';
 import Home from './components/Home';
 import './App.css'
 import NotFound from './components/NotFound';
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from 'react-toastify';
 
 const App = () =>{
   return (
     <BrowserRouter>
+    <ToastContainer position='top-center'/>
       <Routes>
         <Route path='/' element={<Home/>}/>
         <Route path="form" element={<PortfolioForm />}/>

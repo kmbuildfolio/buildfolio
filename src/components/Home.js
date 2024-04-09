@@ -35,7 +35,7 @@ const Home = () => {
   },[])
 
   return (
-    <div style={{ backgroundImage: `url(${img})`, backgroundSize: 'cover' }}>
+    <div>
         <NavBar/>
         {showCookieConsent && <CookieConsent
         debug={true}

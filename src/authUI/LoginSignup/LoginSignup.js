@@ -3,8 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { userLogin, verifyUserStatus } from '../../service/FormService';
 import { getOTP } from '../../service/PersonService';
 import validator from 'validator';
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { toast } from 'react-toastify';
 import { saveUser } from '../../authService/auth';
 import SignupPage from "./SignUp/SignupPage";
 import LoginPage from "./Login/LoginPage";
@@ -76,7 +75,8 @@ const LoginSignUp = ({ setLoginForm, setVerificationPage, setPerson, setLoading 
             return;
           })
           .catch((err) => {
-            if (err.response.data) {
+            console.log(err);
+            if (err.response && err.response.data) {
               setLoginErrorMsg(err.response.data.message);
             } else {
               toast.error("Something Went Wrong");
@@ -135,7 +135,6 @@ const LoginSignUp = ({ setLoginForm, setVerificationPage, setPerson, setLoading 
     };
     return (
       <div className='w-full'>
-        <ToastContainer position='top-center'/>
         <div>
           {loginPage ? (
             <LoginPage

@@ -4,10 +4,10 @@ import ResetPass from "./ResetPass";
 import OTPForm from "./OTPForm";
 import ChangePass from "./ChangePass";
 import { changePassword, sendOTP, verifyOTP } from "../service/PersonService";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import Loading from "../components/Loading";
 import { AUTH_MAIL } from "../service/helper";
+import { verifyUserStatus } from "../service/FormService";
 
 const ForgotPassword = ({ setLoginForm }) => {
   const [step, setStep] = useState(1);
@@ -57,10 +57,25 @@ const ForgotPassword = ({ setLoginForm }) => {
     }
   };
 
-  const handleSubmitEmail = (email) => {
+  const handleSubmitEmail = (e,email) => {
+    setLoading("Verify Status...");
+    e.preventDefault();
     setConfirmEmail(email);
-    verifyEmail(email);
-    setStep(2);
+    verifyUserStatus(email,null)
+    .then((data)=>{
+      if(!data.success){
+        verifyEmail(email);
+        setStep(2);
+      }
+      else{
+        toast.error("Email Not Exist !!");
+      }
+      setLoading(null);
+    })
+    .catch(err=>{
+      toast.error("Something Went Wrong");
+      setLoading(null);
+    })
   };
 
   const handleSubmitPass = (pass, confirmPass) => {
@@ -94,7 +109,6 @@ const ForgotPassword = ({ setLoginForm }) => {
   return (
     <div className="flex justify-around h-[calc(100vh-50px)] relative">
       {loading && <Loading content={loading} />}
-      <ToastContainer position="top-center" />
       {step === 1 ? (
         <ResetPass
           handleSubmitEmail={handleSubmitEmail}

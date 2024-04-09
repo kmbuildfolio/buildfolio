@@ -21,3 +21,7 @@ h2{
 .overflow-wrap-anywhere{
     overflow-wrap: anywhere;
 }
+
+body{
+    background-color: #d4d4d4;
+}

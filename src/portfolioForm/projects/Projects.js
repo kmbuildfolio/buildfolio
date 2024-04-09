@@ -1,5 +1,5 @@
-import { Card, CardContent } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import { CardContent } from "@mui/material";
+import React, { useState } from "react";
 import ProjectInfo from "./ProjectInfo";
 import FormJumpButton from "../FormJumpButton";
 import AddRemoveButton from "../AddRemoveButton";

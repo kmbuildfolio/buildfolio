@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SkillInfo from "./SkillInfo";
-import { Card, CardContent } from "@mui/material";
+import { CardContent } from "@mui/material";
 import FormJumpButton from "../FormJumpButton";
 import AddRemoveButton from "../AddRemoveButton";
-import ProjectInfo from "../projects/ProjectInfo";
 
 const Skills = (props) => {
   const { setCurrFormNum, data, setSkills } = props;
