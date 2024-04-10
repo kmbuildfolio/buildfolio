@@ -20,7 +20,7 @@ export default function Education({education}) {
                 <div className="flex">
                   <PencilIcon className="hidden md:block w-8 text-gray-500 mb-4" />
                   <div className="w-full">
-                    <div className="font-medium text-xl text-white ml-[-32px]">
+                    <div className="font-medium text-xl text-white md:ml-[-32px]">
                       {education.course}
                     </div>
                   </div>
