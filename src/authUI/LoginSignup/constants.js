@@ -43,7 +43,7 @@ const signupFields=[
         placeholder:"Email address"   
     },
     {
-        labelText:"Password",
+        labelText:"Create Password",
         labelFor:"password",
         id:"password",
         name:"password",
