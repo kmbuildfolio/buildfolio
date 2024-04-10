@@ -35,6 +35,7 @@ const PortfolioForm = () => {
     phone: "",
     address: "",
     socials: [{ key: "", value: "" }],
+    introduction : "",
     description: "",
   });
 
@@ -90,6 +91,10 @@ const PortfolioForm = () => {
     };
     savePortfolioForm(portfolio)
       .then((data) => {
+        if(!data.success){
+          toast.error("Something Went Wrong !!");
+          return;
+        }
         toast.info("See Your Portfolio on : https://"+hostname+"/"+person.userName);
         navigate(`/${person.userName}`);
         setLoading(null);
@@ -115,6 +120,9 @@ const PortfolioForm = () => {
         .then((data) => {
           if (data.success) {
             toast.info("See Your Portfolio on : https://"+hostname+"/"+person.userName);
+          }
+          else{
+            toast.error("Somthing Went Wrong !!");
           }
           setLoading(null);
         })

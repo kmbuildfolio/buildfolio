@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import FormJumpButton from "../FormJumpButton";
 import ExperienceInfo from "./ExperienceInfo";
 import AddRemoveButton from "../AddRemoveButton";
+import { matches } from "validator";
 
 const Experience = (props) => {
   const { setCurrFormNum, data, setExperience } = props;
@@ -22,7 +23,7 @@ const Experience = (props) => {
     error = false;
     setErrorMsg(null);
     for(var i = 0; i < experienceInfo.length; i++){
-      if(experienceInfo[i].company.length < 3 || experienceInfo[i].role.length < 3 || experienceInfo[i].location.length < 3 || experienceInfo[i].description.length < 20){
+      if(!matches(experienceInfo[i].company,/^.{3,25}$/) || !matches(experienceInfo[i].role,/^.{3,10}$/) || !matches(experienceInfo[i].location,/^.{3,10}$/) || !matches(experienceInfo[i].description,/^.{20,200}$/s)){
         error = true;
         setErrorMsg("fill mandatory fields properly")
         return false;

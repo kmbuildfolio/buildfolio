@@ -3,6 +3,7 @@ import EducationInfo from "./EducationInfo";
 import { CardContent } from "@mui/material";
 import FormJumpButton from "../FormJumpButton";
 import AddRemoveButton from "../AddRemoveButton";
+import { matches } from "validator";
 
 const Education = (props) => {
   const { setCurrFormNum, data, setEducation } = props;
@@ -22,7 +23,7 @@ const Education = (props) => {
     error = false;
     setErrorMsg(null);
     for(var i = 0; i < educationInfo.length; i++){
-      if(educationInfo[i].course.length < 3 || educationInfo[i].institution.length < 3 || educationInfo[i].location.length < 3){
+      if(!matches(educationInfo[i].course,/^.{3,40}$/) || !matches(educationInfo[i].institution,/^.{5,40}$/) || !matches(educationInfo[i].location,/^.{3,40}$/) || !matches(educationInfo[i].university,/^.{5,40}$/)){
         error = true;
         setErrorMsg("fill mandatory fields properly");
         return false

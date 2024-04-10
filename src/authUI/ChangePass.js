@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { matches } from 'validator';
 
 const ChangePass = ({handleOnSubmitPass}) => {
     const [newPass, setNewPass] = useState('');
@@ -9,6 +10,10 @@ const ChangePass = ({handleOnSubmitPass}) => {
         e.preventDefault();
         if(newPass !== confirmPass){
             setError("New and Confirm Password Must Be Same");
+            return;
+        }
+        if(!matches(newPass,/^.{5,25}$/)){
+            setError("Password length must be between 5 to 25");
             return;
         }
         handleOnSubmitPass(newPass,confirmPass);

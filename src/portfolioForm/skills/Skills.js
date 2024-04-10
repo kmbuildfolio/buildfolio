@@ -3,6 +3,7 @@ import SkillInfo from "./SkillInfo";
 import { CardContent } from "@mui/material";
 import FormJumpButton from "../FormJumpButton";
 import AddRemoveButton from "../AddRemoveButton";
+import { matches } from "validator";
 
 const Skills = (props) => {
   const { setCurrFormNum, data, setSkills } = props;
@@ -22,9 +23,9 @@ const Skills = (props) => {
     error = false;
     setErrorMsg(null);
     for(var i = 0; i < skillsInfo.length; i++){
-      if(skillsInfo[i].length < 2){
+      if(!matches(skillsInfo[i],/^.{2,20}$/)){
         error = true;
-        setErrorMsg("fill mandatory fields properly");
+        setErrorMsg("Skill must contains 2-20 Characters");
         return false;
       }
     }

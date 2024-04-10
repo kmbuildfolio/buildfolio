@@ -3,11 +3,10 @@ import ResetPassInfo from "./ResetPassInfo";
 import ResetPass from "./ResetPass";
 import OTPForm from "./OTPForm";
 import ChangePass from "./ChangePass";
-import { changePassword, sendOTP, verifyOTP } from "../service/PersonService";
+import { changePassword, sendOTP, validateEmail, verifyOTP } from "../service/PersonService";
 import { toast } from "react-toastify";
 import Loading from "../components/Loading";
 import { AUTH_MAIL } from "../service/helper";
-import { verifyUserStatus } from "../service/FormService";
 
 const ForgotPassword = ({ setLoginForm }) => {
   const [step, setStep] = useState(1);
@@ -61,9 +60,9 @@ const ForgotPassword = ({ setLoginForm }) => {
     setLoading("Verify Status...");
     e.preventDefault();
     setConfirmEmail(email);
-    verifyUserStatus(email,null)
+    validateEmail(email)
     .then((data)=>{
-      if(!data.success){
+      if(data.success){
         verifyEmail(email);
         setStep(2);
       }

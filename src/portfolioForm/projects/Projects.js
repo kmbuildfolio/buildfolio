@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import ProjectInfo from "./ProjectInfo";
 import FormJumpButton from "../FormJumpButton";
 import AddRemoveButton from "../AddRemoveButton";
+import { matches } from "validator";
 
 const Projects = (props) => {
   const { setCurrFormNum, data, setProjects } = props;
@@ -14,7 +15,7 @@ const Projects = (props) => {
     error = false;
     setErrorMsg(null);
     for(var i = 0; i < projectInfo.length; i++){
-      if(projectInfo[i].name.length < 3 || projectInfo[i].tech.length < 3 || projectInfo[i].description.length < 20){
+      if(!matches(projectInfo[i].name,/^.{3,25}$/) || !matches(projectInfo[i].tech,/^.{5,50}$/) || !matches(projectInfo[i].description,/^.{20,200}$/s)){
         error = true;
         setErrorMsg("fill mandatory fields properly");
         return false;

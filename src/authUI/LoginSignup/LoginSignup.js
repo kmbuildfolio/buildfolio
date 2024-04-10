@@ -8,6 +8,7 @@ import { saveUser } from '../../authService/auth';
 import SignupPage from "./SignUp/SignupPage";
 import LoginPage from "./Login/LoginPage";
 import { AUTH_MAIL } from '../../service/helper';
+import { matches } from 'validator';
 
 const LoginSignUp = ({ setLoginForm, setVerificationPage, setPerson, setLoading }) => {
     const [loginPage, setLoginPage] = useState(true);
@@ -89,15 +90,15 @@ const LoginSignUp = ({ setLoginForm, setVerificationPage, setPerson, setLoading 
     };
   
     const validateForm = () => {
-      if (registerPerson.userName.length < 4) {
-        setRegisterErrorMsg("Username Contains At Least 4 Character");
+      if (!matches(registerPerson.userName,/^.{3,35}$/)) {
+        setRegisterErrorMsg("Username Contains 3 to 35 Characters");
         return false;
       }
-      if (!validator.matches(registerPerson.userName, /^[a-zA-Z]/)) {
+      if (!matches(registerPerson.userName, /^[a-zA-Z]/)) {
         setRegisterErrorMsg("Username First Character Must Be Alphabet");
         return;
       }
-      if (!validator.matches(registerPerson.userName, /^[a-z][a-z0-9]*$/)) {
+      if (!matches(registerPerson.userName, /^[a-z][a-z0-9]*$/)) {
         setRegisterErrorMsg("UserName Contains LowerCase Alphabets And Digits");
         return false;
       }
@@ -105,8 +106,8 @@ const LoginSignUp = ({ setLoginForm, setVerificationPage, setPerson, setLoading 
         setRegisterErrorMsg("Fill Email Field Carefully !!");
         return false;
       }
-      if (registerPerson.password.length < 5) {
-        setRegisterErrorMsg("Password Length Must Be 5");
+      if (!matches(registerPerson.password,/^.{5,25}$/)) {
+        setRegisterErrorMsg("Password Contains 5 to 25 Characters");
         return false;
       }
       return true;

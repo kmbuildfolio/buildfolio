@@ -30,7 +30,7 @@ const ProjectInfo = ({ data, updateProjects }) => {
       <div className="grid grid-cols-1 gap-4 w-full">
         <div className="flex flex-col gap-1">
           <div>
-            <FormLabel htmlFor="name">Project Name</FormLabel>
+            <FormLabel htmlFor="name">Project Name {"(3-25 Characters)"}</FormLabel>
             <span className="text-red-900 text-[18px]"> *</span>
           </div>
           <Input
@@ -77,7 +77,7 @@ const ProjectInfo = ({ data, updateProjects }) => {
         </div>
         <div className="flex flex-col gap-1">
           <div>
-            <FormLabel htmlFor="email">Tech Stack</FormLabel>
+            <FormLabel htmlFor="email">Tech Stack {"(5-50 Characters)"}</FormLabel>
             <span className="text-red-900 text-[18px]"> *</span>
           </div>
           <Input
@@ -127,7 +127,7 @@ const ProjectInfo = ({ data, updateProjects }) => {
 
         <div className="flex flex-col gap-1">
           <div>
-            <FormLabel htmlFor="social">Description {"(Min 20 Letters)"}</FormLabel>
+            <FormLabel htmlFor="social">Description {"(20-200 Characters)"}</FormLabel>
             <span className="text-red-900 text-[18px]"> *</span>
           </div>
           <TextField

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import AchievementsInfo from "./AchievementsInfo";
-import { Card, CardContent } from "@mui/material";
+import { CardContent } from "@mui/material";
 import FormJumpButton from "../FormJumpButton";
 import AddRemoveButton from "../AddRemoveButton";
+import { matches } from "validator";
 
 const Achievements = (props) => {
   const { setCurrFormNum, data, setAchievements, onSubmit, onUpdate } = props;
@@ -31,7 +32,7 @@ const Achievements = (props) => {
     setErrorMsg(null);
 
     for(var i = 0; i < achievementsInfo.length; i++){
-      if(achievementsInfo[i].name.length < 3 || achievementsInfo[i].description.length < 20){
+      if(!matches(achievementsInfo[i].name,/^.{3,25}$/) || !matches(achievementsInfo[i].description,/^.{20,200}$/)){
         error = true;
         setErrorMsg("fill mandatory fields properly");
         return false;

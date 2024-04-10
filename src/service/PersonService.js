@@ -61,3 +61,13 @@ export const sendMessage = async (userContact, username) =>{
         throw err;
     }
 }
+
+export const validateEmail = async (email) =>{
+    try{
+        const res = await myAxios.get(`/api/public/validate/email?email=${email}`);
+        return res.data;
+    }
+    catch(err){
+        throw err;
+    }
+}

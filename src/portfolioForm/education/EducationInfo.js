@@ -6,7 +6,7 @@ const EducationInfo = ({ data, updateEducation }) => {
       <div className="grid grid-cols-1 gap-4 w-full">
         <div className="flex flex-col gap-1">
           <div>
-          <FormLabel htmlFor="name">Course</FormLabel>
+          <FormLabel htmlFor="name">Course {"(3-40 Letters)"}</FormLabel>
           <span className="text-red-900 text-[18px]"> *</span>
           </div>
           <Input
@@ -23,7 +23,7 @@ const EducationInfo = ({ data, updateEducation }) => {
         </div>
         <div className="flex flex-col gap-1">
           <div>
-          <FormLabel htmlFor="name">University</FormLabel>
+          <FormLabel htmlFor="name">University {"(5-40 Letters)"}</FormLabel>
           <span className="text-red-900 text-[18px]"> *</span>
           </div>
           <Input
@@ -41,7 +41,7 @@ const EducationInfo = ({ data, updateEducation }) => {
         </div>
         <div className="flex flex-col gap-1">
           <div>
-          <FormLabel htmlFor="name">Institution</FormLabel>
+          <FormLabel htmlFor="name">Institution {"(5-40 Letters)"}</FormLabel>
           <span className="text-red-900 text-[18px]"> *</span>
           </div>
           <Input
@@ -59,7 +59,7 @@ const EducationInfo = ({ data, updateEducation }) => {
         </div>
         <div className="flex flex-col gap-1">
           <div>
-            <FormLabel htmlFor="text">Location</FormLabel>
+            <FormLabel htmlFor="text">Location {"(3-40 Characters)"}</FormLabel>
             <span className="text-red-900 text-[18px]"> *</span>
           </div>
           

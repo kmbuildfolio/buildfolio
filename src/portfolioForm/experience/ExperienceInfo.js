@@ -7,7 +7,7 @@ const ExperienceInfo = ({ data, setExperienceInfo }) => {
       <div className="grid grid-cols-1 gap-4 w-full">
         <div className="flex flex-col gap-1">
           <div>
-            <FormLabel htmlFor="name">Company</FormLabel>
+            <FormLabel htmlFor="name">Company {"(3-25 Letters)"}</FormLabel>
             <span className="text-red-900 text-[18px]"> *</span>
           </div>
           <Input
@@ -24,7 +24,7 @@ const ExperienceInfo = ({ data, setExperienceInfo }) => {
         </div>
         <div className="flex flex-col gap-1">
           <div>
-            <FormLabel htmlFor="email">Role</FormLabel>
+            <FormLabel htmlFor="email">Role {"(3-10 Letters)"}</FormLabel>
             <span className="text-red-900 text-[18px]"> *</span>
           </div>
           <Input
@@ -42,7 +42,7 @@ const ExperienceInfo = ({ data, setExperienceInfo }) => {
         </div>
         <div className="flex flex-col gap-1">
           <div>
-            <FormLabel htmlFor="phone">Location</FormLabel>
+            <FormLabel htmlFor="phone">Location {"(3-40 Letters)"}</FormLabel>
             <span className="text-red-900 text-[18px]"> *</span>
           </div>
           <Input
@@ -93,7 +93,7 @@ const ExperienceInfo = ({ data, setExperienceInfo }) => {
         </div>
         <div className="flex flex-col gap-1">
           <div>
-            <FormLabel htmlFor="description">Description {"(Min 20 Letters)"}</FormLabel>
+            <FormLabel htmlFor="description">Description {"(20-200 Letters)"}</FormLabel>
             <span className="text-red-900 text-[18px]"> *</span>
           </div>
           <TextField

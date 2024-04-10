@@ -10,7 +10,6 @@ export default function Contact({ contact, onSendMessage }) {
 
   const onSubmit = (e)=>{
     e.preventDefault();
-    console.log(userContact);
     if(!validator.isEmail(userContact.email)){
         alert("Check Email Field");
         return;
@@ -19,8 +18,8 @@ export default function Contact({ contact, onSendMessage }) {
       alert("Name Only Include Alphabets");
       return;
     }
-    if(userContact.message.length < 5){
-      alert("Message Length At Least 5");
+    if(!validator.matches(userContact.message,/^.{5,200}$/)){
+      alert("Message Length Must Between 5 to 200 Characters");
       return;
     }
     toast.success("Message Sent !!");

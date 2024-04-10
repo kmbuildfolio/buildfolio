@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import SocialInput from "./SocialInput";
 import FormJumpButton from "../FormJumpButton";
 import AddRemoveButton from "../AddRemoveButton";
+import { matches, isEmail } from "validator";
 
 const PersonalDetails = (props) => {
   const { setCurrFormNum, setBio, data } = props;
@@ -19,16 +20,27 @@ const PersonalDetails = (props) => {
   const setConfirmData = () => {
     setErrorMsg(null);
     error = false;
-    if(biodata.name.length < 3 || biodata.email.length < 3 || biodata.phone.length < 10 || biodata.address.length < 5 || biodata.description.length < 20){
-      setErrorMsg("fill mandatory fields properly")
-      error = true;
-    }
-    for(var i = 0; i < biodata.socials.length; i++){
-      if(biodata.socials[i].key.length < 2 || biodata.socials[i].value.length < 5){
-        setErrorMsg("fill mandatory fields properly")
+    try{
+      if(!matches(biodata.name,/^.{3,5}$/) || !isEmail(biodata.email) || !matches(biodata.phone,/^.{10,15}$/) || !matches(biodata.address,/^.{5,50}$/) || !matches(biodata.description,/^.{20,200}$/s) || !matches(biodata.introduction,/^.{15,70}$/s)){
+        setErrorMsg("fill mandatory fields properly");
         error = true;
       }
+      for(var i = 0; i < biodata.socials.length; i++){
+        if(!matches(biodata.socials[i].key,/^.{2,25}$/)){
+          setErrorMsg("Key must be contains 2 to 25 characters");
+          error = true;
+        }
+        if(!matches(biodata.socials[i].value,/^.{5,100}$/)){
+          setErrorMsg("Value must be contains 5 to 100 characters");
+          error = true;
+        }
+      }
     }
+    catch(err){
+      setErrorMsg("fill mandatory fields properly");
+      error = true;
+    }
+
     if(!error){
       setBio(biodata);
     }
@@ -65,7 +77,7 @@ const PersonalDetails = (props) => {
         <div className="grid grid-cols-1 gap-4 w-full">
           <div className="flex flex-col gap-1">
             <div>
-               <FormLabel htmlFor="name">Name</FormLabel>
+               <FormLabel htmlFor="name">Name {"(3-25 Letters)"}</FormLabel>
                <span className="text-red-900 text-[18px]"> *</span>
             </div>
             <Input
@@ -95,7 +107,7 @@ const PersonalDetails = (props) => {
           </div>
           <div className="flex flex-col gap-1">
             <div>
-            <FormLabel htmlFor="phone">Phone</FormLabel>
+            <FormLabel htmlFor="phone">Phone {"(10-15 Digits)"}</FormLabel>
             <span className="text-red-900 text-[18px]"> *</span>
             </div>
             <Input
@@ -111,7 +123,7 @@ const PersonalDetails = (props) => {
           </div>
           <div className="flex flex-col gap-1">
             <div>
-            <FormLabel htmlFor="address">Address</FormLabel>
+            <FormLabel htmlFor="address">Address {"(5-50 Characters)"}</FormLabel>
             <span className="text-red-900 text-[18px]"> *</span>
             </div>
             <Input
@@ -148,7 +160,24 @@ const PersonalDetails = (props) => {
           />
           <div className="flex flex-col gap-1">
             <div>
-            <FormLabel htmlFor="social">Description {"(Min 20 Letters)"}</FormLabel>
+            <FormLabel htmlFor="social">Introduction {"(15-70 Characters)"}</FormLabel>
+            <span className="text-red-900 text-[18px]"> *</span>
+            </div>
+            <TextField
+              multiline
+              value={biodata.introduction}
+              onChange={(e) => { setBiodata({ ...biodata, introduction: e.target.value }) }}
+              minRows={3}
+              focused={false}
+              id="introduction"
+              placeholder=" Hi, I'm <Your Name>.
+              I love to build amazing apps."
+              type="text"
+            />
+          </div>
+          <div className="flex flex-col gap-1">
+            <div>
+            <FormLabel htmlFor="social">Description {"(20-200 Characters)"}</FormLabel>
             <span className="text-red-900 text-[18px]"> *</span>
             </div>
             <TextField
@@ -157,7 +186,7 @@ const PersonalDetails = (props) => {
               onChange={(e) => { setBiodata({ ...biodata, description: e.target.value }) }}
               minRows={3}
               focused={false}
-              id="description"
+              id="introduction"
               placeholder="Description"
               type="text"
             />
