@@ -30,7 +30,7 @@ export default function Experience({experience}) {
                         src={experience.image ? experience.image : "./experience-default.png"}
                         className="hidden sm:block w-8 rounded-full flex-shrink-0 object-cover object-center mr-4"
                       />
-                      <div className="font-medium text-lg sm:ml-[-32px]">{experience.company}</div>
+                      <div className="font-medium text-lg sm:mr-[32px]">{experience.company}</div>
                     </div>
 
                     <span className="text-gray-300 text-xs uppercase">
