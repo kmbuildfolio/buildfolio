@@ -18,7 +18,7 @@ export default function Education({education}) {
             <div key={key} className="p-4 md:w-1/2 w-full">
               <div className="h-full bg-gray-800 bg-opacity-40 p-8 rounded">
                 <div className="flex">
-                  <PencilIcon className="block w-8 text-gray-500 mb-4" />
+                  <PencilIcon className="hidden md:block w-8 text-gray-500 mb-4" />
                   <div className="w-full">
                     <div className="font-medium text-xl text-white ml-[-32px]">
                       {education.course}
