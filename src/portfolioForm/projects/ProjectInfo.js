@@ -2,8 +2,7 @@ import { TrashIcon } from "@heroicons/react/solid";
 import { TextField } from "@mui/material";
 import { FormLabel } from "@mui/material";
 import { Input } from "@mui/material";
-import React, { useState } from "react";
-import ReactImageUploading from "react-images-uploading";
+import React from "react";
 
 const ProjectInfo = ({ data, updateProjects }) => {
   const handleFileChange = (event, callback) => {
@@ -30,7 +29,7 @@ const ProjectInfo = ({ data, updateProjects }) => {
       <div className="grid grid-cols-1 gap-4 w-full">
         <div className="flex flex-col gap-1">
           <div>
-            <FormLabel htmlFor="name">Project Name {"(3-25 Characters)"}</FormLabel>
+            <FormLabel htmlFor="name">Project Name</FormLabel>
             <span className="text-red-900 text-[18px]"> *</span>
           </div>
           <Input
@@ -77,7 +76,7 @@ const ProjectInfo = ({ data, updateProjects }) => {
         </div>
         <div className="flex flex-col gap-1">
           <div>
-            <FormLabel htmlFor="email">Tech Stack {"(5-50 Characters)"}</FormLabel>
+            <FormLabel htmlFor="email">Tech Stack</FormLabel>
             <span className="text-red-900 text-[18px]"> *</span>
           </div>
           <Input
@@ -127,7 +126,7 @@ const ProjectInfo = ({ data, updateProjects }) => {
 
         <div className="flex flex-col gap-1">
           <div>
-            <FormLabel htmlFor="social">Description {"(20-200 Characters)"}</FormLabel>
+            <FormLabel htmlFor="social">Description</FormLabel>
             <span className="text-red-900 text-[18px]"> *</span>
           </div>
           <TextField

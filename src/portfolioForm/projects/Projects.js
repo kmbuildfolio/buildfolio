@@ -4,8 +4,10 @@ import ProjectInfo from "./ProjectInfo";
 import FormJumpButton from "../FormJumpButton";
 import AddRemoveButton from "../AddRemoveButton";
 import { matches } from "validator";
+import { useRef } from "react";
 
 const Projects = (props) => {
+  const formRef = useRef();
   const { setCurrFormNum, data, setProjects } = props;
   const [projectInfo, setProjectInfo] = useState(data);
   var error = false;
@@ -14,15 +16,27 @@ const Projects = (props) => {
   const confirmData = () => {
     error = false;
     setErrorMsg(null);
-    for(var i = 0; i < projectInfo.length; i++){
-      if(!matches(projectInfo[i].name,/^.{3,25}$/) || !matches(projectInfo[i].tech,/^.{5,50}$/) || !matches(projectInfo[i].description,/^.{20,200}$/s)){
-        error = true;
-        setErrorMsg("fill mandatory fields properly");
-        return false;
+    try{
+      for(var i = 0; i < projectInfo.length; i++){
+        if(!matches(projectInfo[i].name,/^.{3,25}$/)){
+          throw Error("Project Name length must between 3 to 25");
+        }
+        else if(!matches(projectInfo[i].tech,/^.{5,50}$/)){
+          throw Error("Tech Stack length must between 5 to 50");
+        }
+        else if(!matches(projectInfo[i].description,/^.{20,200}$/s)){
+          throw Error("Description length must between 20 to 200");
+        }
       }
+      setProjects(projectInfo);
+      return true;
     }
-    setProjects(projectInfo);
-    return true;
+    catch(err){
+        setErrorMsg(err.message);
+        error = true;
+        scrollToTop();
+        return false;
+    }
   };
 
   const updateProjects = (index, obj) => {
@@ -44,10 +58,17 @@ const Projects = (props) => {
     }
   };
 
+  const scrollToTop = () => {
+    formRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <div>
-      <CardContent className="flex flex-col">
-      {errorMsg && <span className="text-[#ff3333] text-sm self-center">{errorMsg}</span>}
+      <CardContent className="flex flex-col" ref={formRef}>
+      {errorMsg && <span className="text-[#ff3333] text-sm self-center mb-4">{errorMsg}</span>}
         {projectInfo.map((data, key) => (
           <div key={key}>
             <ProjectInfo

@@ -4,8 +4,10 @@ import { CardContent } from "@mui/material";
 import FormJumpButton from "../FormJumpButton";
 import AddRemoveButton from "../AddRemoveButton";
 import { matches } from "validator";
+import { useRef } from "react";
 
 const Skills = (props) => {
+  const formRef = useRef();
   const { setCurrFormNum, data, setSkills } = props;
   const [skillsInfo, setSkillsInfo] = useState(data);
   var error = false;
@@ -26,6 +28,7 @@ const Skills = (props) => {
       if(!matches(skillsInfo[i],/^.{2,20}$/)){
         error = true;
         setErrorMsg("Skill must contains 2-20 Characters");
+        scrollToTop();
         return false;
       }
     }
@@ -40,10 +43,18 @@ const Skills = (props) => {
       setSkillsInfo(skillsInfo.slice(0, -1));
     }
   };
+
+  const scrollToTop = () => {
+    formRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <div>
-      <CardContent className="flex flex-col">
-      {errorMsg && <span className="text-[#ff3333] text-sm self-center">{errorMsg}</span>}
+      <CardContent className="flex flex-col" ref={formRef}>
+      {errorMsg && <span className="text-[#ff3333] text-sm self-center mb-4">{errorMsg}</span>}
         <div className="grid grid-rows-1 gap-4 w-full">
           {skillsInfo.map((skill, key) => (
             <div key={key}>

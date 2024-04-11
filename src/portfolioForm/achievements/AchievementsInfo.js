@@ -7,7 +7,7 @@ const AchievementsInfo = ({ data, updateAchievements }) => {
       <div className="grid grid-cols-1 gap-4 w-full">
         <div className="flex flex-col gap-1">
           <div>
-            <FormLabel htmlFor="name">Achievement Name {"(3-25 Letters)"}</FormLabel>
+            <FormLabel htmlFor="name">Achievement Name</FormLabel>
             <span className="text-red-900 text-[18px]"> *</span>
           </div>
           <Input
@@ -23,7 +23,7 @@ const AchievementsInfo = ({ data, updateAchievements }) => {
 
         <div className="flex flex-col gap-1">
           <div>
-            <FormLabel htmlFor="social">Description {"(20-200 Characters)"}</FormLabel>
+            <FormLabel htmlFor="social">Description</FormLabel>
             <span className="text-red-900 text-[18px]"> *</span>
           </div>
           <TextField

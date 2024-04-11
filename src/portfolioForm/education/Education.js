@@ -4,8 +4,10 @@ import { CardContent } from "@mui/material";
 import FormJumpButton from "../FormJumpButton";
 import AddRemoveButton from "../AddRemoveButton";
 import { matches } from "validator";
+import { useRef } from "react";
 
 const Education = (props) => {
+  const formRef = useRef();
   const { setCurrFormNum, data, setEducation } = props;
   const [educationInfo, setEducationInfo] = useState(data);
   var error = false;
@@ -22,15 +24,30 @@ const Education = (props) => {
   const confirmEducation = () => {
     error = false;
     setErrorMsg(null);
-    for(var i = 0; i < educationInfo.length; i++){
-      if(!matches(educationInfo[i].course,/^.{3,40}$/) || !matches(educationInfo[i].institution,/^.{5,40}$/) || !matches(educationInfo[i].location,/^.{3,40}$/) || !matches(educationInfo[i].university,/^.{5,40}$/)){
-        error = true;
-        setErrorMsg("fill mandatory fields properly");
-        return false
+    try{
+      for(var i = 0; i < educationInfo.length; i++){
+        if(!matches(educationInfo[i].course,/^.{3,40}$/)){
+          throw Error("Course length must between 3 to 40");
+        }
+        else if(!matches(educationInfo[i].university,/^.{5,40}$/)){
+          throw Error("University length must between 5 to 40");
+        }
+        else if(!matches(educationInfo[i].institution,/^.{5,40}$/)){
+          throw Error("Institution length must between 5 to 50");
+        }
+        else if(!matches(educationInfo[i].location,/^.{3,40}$/)){
+          throw Error("Location length must between 3 to 40");
+        }
       }
+      setEducation(educationInfo);
+      return true;
     }
-    setEducation(educationInfo);
-    return true;
+    catch(err){
+      error = true;
+      setErrorMsg(err.message);
+      scrollToTop();
+      return false;
+    }
   };
 
   const changeEducationInfo = (flag) => {
@@ -43,10 +60,18 @@ const Education = (props) => {
       setEducationInfo(educationInfo.slice(0, -1));
     }
   };
+
+  const scrollToTop = () => {
+    formRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
+
   return (
     <div>
-      <CardContent className="flex flex-col">
-      {errorMsg && <span className="text-[#ff3333] text-sm self-center">{errorMsg}</span>}
+      <CardContent className="flex flex-col" ref={formRef}>
+      {errorMsg && <span className="text-[#ff3333] text-sm self-center mb-4">{errorMsg}</span>}
         {educationInfo.map((data, key) => (
           <div key={key}>
             <EducationInfo

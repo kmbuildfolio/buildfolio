@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 import PersonalDetails from "./personalDetails/PersonalDetails";
 import Experience from "./experience/Experience";
@@ -12,7 +12,6 @@ import "./form.css";
 import { Button } from "@mui/material";
 import NavBar from "../components/NavBar";
 import { useNavigate } from "react-router-dom";
-import img from "../assets/intro-bg.jpg";
 import {
   getPortfolio,
   savePortfolioForm,

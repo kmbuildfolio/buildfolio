@@ -4,8 +4,10 @@ import { CardContent } from "@mui/material";
 import FormJumpButton from "../FormJumpButton";
 import AddRemoveButton from "../AddRemoveButton";
 import { matches } from "validator";
+import { useRef } from "react";
 
 const Achievements = (props) => {
+  const formRef = useRef();
   const { setCurrFormNum, data, setAchievements, onSubmit, onUpdate } = props;
   const [achievementsInfo, setAchievementsInfo] = useState(data);
   var error = false;
@@ -31,21 +33,37 @@ const Achievements = (props) => {
     error = false;
     setErrorMsg(null);
 
-    for(var i = 0; i < achievementsInfo.length; i++){
-      if(!matches(achievementsInfo[i].name,/^.{3,25}$/) || !matches(achievementsInfo[i].description,/^.{20,200}$/)){
-        error = true;
-        setErrorMsg("fill mandatory fields properly");
-        return false;
+    try{
+      for(var i = 0; i < achievementsInfo.length; i++){
+        if(!matches(achievementsInfo[i].name,/^.{3,25}$/)){
+          throw Error("Achievement Name must between 3 to 25");
+        }
+        else if(!matches(achievementsInfo[i].description,/^.{20,200}$/)){
+          throw Error("Description must between 20 to 200");
+        }
       }
+      setAchievements(achievementsInfo);
+      return true;
     }
-    setAchievements(achievementsInfo);
-    return true;
+    catch(err){
+      error = true;
+        setErrorMsg(err.message);
+        scrollToTop();
+        return false;
+    }
+  };
+
+  const scrollToTop = () => {
+    formRef.current.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   };
 
   return (
     <div>
-      <CardContent className="flex flex-col">
-      {errorMsg && <span className="text-[#ff3333] text-sm self-center">{errorMsg}</span>}
+      <CardContent className="flex flex-col" ref={formRef}>
+      {errorMsg && <span className="text-[#ff3333] text-sm self-center mb-4">{errorMsg}</span>}
         {achievementsInfo.map((data, key) => (
           <div key={key}>
             <AchievementsInfo
