@@ -21,7 +21,7 @@ const PersonalDetails = (props) => {
     setErrorMsg(null);
     error = false;
     try{
-      if(!matches(biodata.name,/^.{3,5}$/) || !isEmail(biodata.email) || !matches(biodata.phone,/^.{10,15}$/) || !matches(biodata.address,/^.{5,50}$/) || !matches(biodata.description,/^.{20,200}$/s) || !matches(biodata.introduction,/^.{15,70}$/s)){
+      if(!matches(biodata.name,/^.{3,25}$/) || !isEmail(biodata.email) || !matches(biodata.phone,/^.{10,15}$/) || !matches(biodata.address,/^.{5,50}$/) || !matches(biodata.description,/^.{20,200}$/s) || !matches(biodata.introduction,/^.{15,70}$/s)){
         setErrorMsg("fill mandatory fields properly");
         error = true;
       }
